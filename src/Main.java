@@ -1,17 +1,57 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+
+import java.util.Scanner;
+
 public class Main {
+
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        int pressedKey;
+        do {
+            showMainMenu();
+            Scanner scanner = new Scanner(System.in);
+            pressedKey = scanner.nextInt();
+            selectedMainAction(pressedKey);
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+        } while (pressedKey != 0);
+
+    }
+
+    public static void showMainMenu() {
+        System.out.println("| -----------......................----------- |");
+        System.out.println("| Welcome to the ABC Company Management System |");
+        System.out.println("| -----------......................----------- |");
+        System.out.println("| (1) Manage Product                           |");
+        System.out.println("| (2) Manage Customers                         |");
+        System.out.println("| (3) Invoice Generation                       |");
+        System.out.println("| (4) Admin Tasks                              |");
+        System.out.println("| (0) Exit                                     |");
+        System.out.println("|----------------------------------------------|");
+        System.out.print("Enter the number of the title : ");
+    }
+
+    public static void selectedMainAction(int pressedKey) {
+
+        switch (pressedKey) {
+            case 1:
+                System.out.println("Entered No 1");
+                break;
+            case 2:
+                System.out.println("Entered No 2");
+                break;
+            case 3:
+                System.out.println("Entered No 3");
+                break;
+            case 4:
+                System.out.println("Entered No 4");
+                break;
+            case 0:
+                System.out.println("Bye");
+                break;
+            default:
+                System.out.println("Please Enter Valid Number");
         }
     }
+
+    //Implement the other menus and action methods
+
 }
