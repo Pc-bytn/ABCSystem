@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
-public class CustomerActions {
-    static Customer customer;
+public class CustomerActions implements DbActions{
 
 
     public void startCustomer() {
@@ -66,15 +65,28 @@ public class CustomerActions {
         String dateOfBirth = inputScanner.nextLine();
         System.out.print(" Enter Your Gender         :");
         String gender = inputScanner.nextLine();
-        customer = new Customer(id,name,email,address,contactNumber,dateOfBirth,gender);
-        System.out.println(customer.getId());
-        System.out.println(customer.getName());
-        System.out.println(customer.getEmail());
-        System.out.println(customer.getAddress());
-        System.out.println(customer.getContactNumber());
-        System.out.println(customer.getDateOfBirth());
-        System.out.println(customer.getGender());
+        Customer customer = new Customer(id,name,email,address,contactNumber,dateOfBirth,gender);
+        add();
     }
 
 
+    @Override
+    public void select() {
+
+    }
+
+    @Override
+    public void add() {
+
+    }
+
+    @Override
+    public void update() {
+
+    }
+
+    @Override
+    public void delete() {
+
+    }
 }

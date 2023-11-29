@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Customer implements DbActions {
+public class Customer{
     private String id;
     private String name;
     private String email;
@@ -74,24 +74,4 @@ public class Customer implements DbActions {
         this.gender = gender;
     }
 
-
-    @Override
-    public void select() {
-
-    }
-
-    @Override
-    public void add() {
-
-    }
-
-    @Override
-    public void update() {
-
-    }
-
-    @Override
-    public void delete() {
-
-    }
 }
