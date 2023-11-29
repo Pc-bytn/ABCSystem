@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Customer implements DbActions {
     private String id;
     private String name;
@@ -68,7 +70,6 @@ public class Customer implements DbActions {
     public String getGender() {
         return gender;
     }
-
     public void setGender(String gender) {
         this.gender = gender;
     }

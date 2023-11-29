@@ -4,19 +4,23 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        startProgram();
+    }
 
+    public static void startProgram() {
         int pressedKey;
         do {
             showMainMenu();
             Scanner scanner = new Scanner(System.in);
             pressedKey = scanner.nextInt();
-            selectedMainAction(pressedKey);
+            selectedMainMenuAction(pressedKey);
 
         } while (pressedKey != 0);
-
     }
 
     public static void showMainMenu() {
+        System.out.println();
+        System.out.println();
         System.out.println("| -----------......................----------- |");
         System.out.println("| Welcome to the ABC Company Management System |");
         System.out.println("| -----------......................----------- |");
@@ -29,22 +33,22 @@ public class Main {
         System.out.print("Enter the number of the title : ");
     }
 
-    public static void selectedMainAction(int pressedKey) {
 
+    public static void selectedMainMenuAction(int pressedKey) {
         switch (pressedKey) {
-            case 1:
+            case 1: // Product
                 System.out.println("Entered No 1");
                 break;
-            case 2:
-                System.out.println("Entered No 2");
+            case 2: // Customer
+                CustomerActions.startCustomer();
                 break;
-            case 3:
+            case 3:// Invoice
                 System.out.println("Entered No 3");
                 break;
-            case 4:
+            case 4: // Admin
                 System.out.println("Entered No 4");
                 break;
-            case 0:
+            case 0: // Exit
                 System.out.println("Bye");
                 break;
             default:
@@ -52,6 +56,9 @@ public class Main {
         }
     }
 
-    //Implement the other menus and action methods
 
-}
+
+        //Implement the other menus and action methods
+
+
+    }
