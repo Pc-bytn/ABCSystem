@@ -40,7 +40,8 @@ public class Main {
                 System.out.println("Entered No 1");
                 break;
             case 2: // Customer
-                CustomerActions.startCustomer();
+                CustomerActions customerActions = new CustomerActions();
+                customerActions.startCustomer();
                 break;
             case 3:// Invoice
                 System.out.println("Entered No 3");
