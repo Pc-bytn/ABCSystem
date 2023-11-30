@@ -1,6 +1,7 @@
 //This file is use for simplify the development when implementing the code in Main.java
 //So this file is a child of Main.java file
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CustomerActions {
@@ -8,13 +9,20 @@ public class CustomerActions {
 
     public void startCustomer() {
         int pressedKey;
-        do {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
             showCustomerMenu();
-            Scanner scanner = new Scanner(System.in);
-            pressedKey = scanner.nextInt();
-            selectedCustomerMenuAction(pressedKey);
-        } while (pressedKey != 0);
+            try {
+                pressedKey = scanner.nextInt();
+                selectedCustomerMenuAction(pressedKey);
+                break;
+            } catch (InputMismatchException mismatchException) {
+                System.out.println("Invalid input. Please enter a valid number.");
+                scanner.nextLine();
+            }
+        }
     }
+
 
     public void selectedCustomerMenuAction(int pressedKey) {
         switch (pressedKey) {
@@ -36,7 +44,6 @@ public class CustomerActions {
                 System.out.println("Please Enter Valid Number");
         }
     }
-
 
     public static void showCustomerMenu() {
         System.out.println();
@@ -67,6 +74,7 @@ public class CustomerActions {
         String dateOfBirth = inputScanner.nextLine();
         System.out.print(" Enter Your Gender         :");
         String gender = inputScanner.nextLine();
+
         Customer customer = new Customer();
         customer.setName(name);
         customer.setEmail(email);
@@ -75,6 +83,7 @@ public class CustomerActions {
         customer.setDateOfBirth(dateOfBirth);
         customer.setGender(gender);
         customer.add();
+
 
     }
 

@@ -1,5 +1,6 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class Customer implements DbActions {
     private String id;
@@ -106,7 +107,7 @@ public class Customer implements DbActions {
             con.close();
             System.out.println();
             System.out.println("Customer Registered Successfully.");
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("This Error is generated while adding the customer to the database.");
             System.out.println("Error is : " + e.getMessage());
         }

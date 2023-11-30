@@ -1,4 +1,5 @@
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -9,14 +10,20 @@ public class Main {
 
     public static void startProgram() {
         int pressedKey;
-        do {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
             showMainMenu();
-            Scanner scanner = new Scanner(System.in);
-            pressedKey = scanner.nextInt();
-            selectedMainMenuAction(pressedKey);
-
-        } while (pressedKey != 0);
+            try {
+                pressedKey = scanner.nextInt();
+                selectedMainMenuAction(pressedKey);
+                break;
+            } catch (InputMismatchException mismatchException) {
+                System.out.println("Invalid input. Please enter a valid number.");
+                scanner.nextLine();
+            }
+        }
     }
+
 
     public static void showMainMenu() {
         System.out.println();
@@ -58,8 +65,7 @@ public class Main {
     }
 
 
+    //Implement the other menus and action methods
 
-        //Implement the other menus and action methods
 
-
-    }
+}
