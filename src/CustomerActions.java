@@ -1,6 +1,9 @@
+//This file is use for simplify the development when implementing the code in Main.java
+//So this file is a child of Main.java file
+
 import java.util.Scanner;
 
-public class CustomerActions implements DbActions{
+public class CustomerActions {
 
 
     public void startCustomer() {
@@ -34,6 +37,7 @@ public class CustomerActions implements DbActions{
         }
     }
 
+
     public static void showCustomerMenu() {
         System.out.println();
         System.out.println();
@@ -51,8 +55,6 @@ public class CustomerActions implements DbActions{
 
     public void addCustomer() {
         Scanner inputScanner = new Scanner(System.in);
-        System.out.print(" Enter Your Customer Id    :");
-        String id = inputScanner.nextLine();
         System.out.print(" Enter Your Name           :");
         String name = inputScanner.nextLine();
         System.out.print(" Enter Your Email          :");
@@ -65,28 +67,15 @@ public class CustomerActions implements DbActions{
         String dateOfBirth = inputScanner.nextLine();
         System.out.print(" Enter Your Gender         :");
         String gender = inputScanner.nextLine();
-        Customer customer = new Customer(id,name,email,address,contactNumber,dateOfBirth,gender);
-        add();
-    }
-
-
-    @Override
-    public void select() {
-
-    }
-
-    @Override
-    public void add() {
+        Customer customer = new Customer();
+        customer.setName(name);
+        customer.setEmail(email);
+        customer.setAddress(address);
+        customer.setContactNumber(contactNumber);
+        customer.setDateOfBirth(dateOfBirth);
+        customer.setGender(gender);
+        customer.add();
 
     }
 
-    @Override
-    public void update() {
-
-    }
-
-    @Override
-    public void delete() {
-
-    }
 }
