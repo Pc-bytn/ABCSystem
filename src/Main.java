@@ -47,8 +47,8 @@ public class Main {
                 System.out.println("Entered No 1");
                 break;
             case 2: // Customer
-                CustomerActions customerActions = new CustomerActions();
-                customerActions.startCustomer();
+                CustomerUI customerUI = new CustomerUI();
+                customerUI.startCustomer();
                 break;
             case 3:// Invoice
                 System.out.println("Entered No 3");

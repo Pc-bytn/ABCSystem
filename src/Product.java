@@ -65,7 +65,7 @@ public class Product implements DbActions{
 
 
     @Override
-    public void select() {
+    public void select(int id) {
 
     }
 

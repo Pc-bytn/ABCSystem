@@ -1,6 +1,4 @@
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class Customer implements DbActions {
     private String id;
@@ -20,7 +18,9 @@ public class Customer implements DbActions {
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
     }
-    public Customer() {}
+
+    public Customer() {
+    }
 
 
     public String getId() {
@@ -79,15 +79,49 @@ public class Customer implements DbActions {
         this.gender = gender;
     }
 
-    @Override
-    public void select() {
 
+    @Override
+    public void select(int id) {
+        String query = "SELECT `cusID`, `cusName`, `cusEmail`, `cusAddress`, `cusMobileNo`, `cusDOB`, `cusGender` FROM `customer` WHERE `cusID` = " + id + ";";
+        String cusID = null;
+        String cusName = null;
+        String cusEmail = null;
+        String cusAddress = null;
+        String cusMobileNo = null;
+        String cusDOB = null;
+        String cusGender = null;
+        try {
+            Connection con = DbConnect.connect();
+            assert con != null;
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+
+                cusID = rs.getString("cusID");
+                cusName = rs.getString("cusName");
+                cusEmail = rs.getString("cusEmail");
+                cusAddress = rs.getString("cusAddress");
+                cusMobileNo = rs.getString("cusMobileNo");
+                cusDOB = rs.getString("cusDOB");
+                cusGender = rs.getString("cusGender");
+            }
+        } catch (SQLException sqlException) {
+            System.out.println(sqlException.getMessage());
+        }
+
+        System.out.println("Customer ID             :" +"CUS"+ cusID);
+        System.out.println("Customer Name           :" + cusName);
+        System.out.println("Customer Email          :" + cusEmail);
+        System.out.println("Customer Address        :" + cusAddress);
+        System.out.println("Customer Mobile No.     :" + cusMobileNo);
+        System.out.println("Customer Date of Birth  :" + cusDOB);
+        System.out.println("Customer Gender         :" + cusGender);
     }
 
     @Override
     public void add() {
 
-        String query = "INSERT INTO `customer`(`cusName`, `cusEmail`, `cusAddress`, `cusNumber`, `cusDOB`, `cusGender`) " +
+        String query = "INSERT INTO `customer`(`cusName`, `cusEmail`, `cusAddress`, `cusMobileNo`, `cusDOB`, `cusGender`) " +
                 "VALUES (?,?,?,?,?,?)";
 
         PreparedStatement preparedStatement = null;

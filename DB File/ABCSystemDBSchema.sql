@@ -16,6 +16,16 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Current Database: `abcsystemdb`
+--
+
+/*!40000 DROP DATABASE IF EXISTS `abcsystemdb`*/;
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `abcsystemdb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
+
+USE `abcsystemdb`;
+
+--
 -- Table structure for table `customer`
 --
 
@@ -27,12 +37,12 @@ CREATE TABLE `customer` (
   `cusName` varchar(255) NOT NULL,
   `cusEmail` varchar(100) NOT NULL,
   `cusAddress` varchar(255) NOT NULL,
-  `cusNumber` varchar(10) NOT NULL,
+  `cusMobileNo` varchar(10) NOT NULL,
   `cusDOB` date NOT NULL,
   `cusGender` varchar(10) NOT NULL,
   `cusDateCreated` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`cusID`)
-) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1006 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,6 +51,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
+INSERT INTO `customer` VALUES (1000,'Pasindu','hgpcsagara@gmail.com','Galahitiyawa','0786272616','2001-12-21','Male','2023-11-30 13:15:16'),(1001,'testName','test@mail.com','testAddress','0782165232','2000-10-10','Male','2023-11-30 14:00:45'),(1002,'test1Name','test1@mail.com','test1Address','0123521623','1999-12-12','male','2023-11-30 14:22:42'),(1003,'test2Name','test2@mail.com','test2Adderss','0786525632','2000-11-11','Female','2023-11-30 14:26:29'),(1004,'test3Name','test3@mail.com','test3Address','0756358986','2000-12-12','Male','2023-11-30 14:33:00'),(1005,'test4Name','test4@mail.com','test4Address','0787845213','1999-10-10','Female','2023-11-30 14:35:56');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +64,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-30 14:40:57
+-- Dump completed on 2023-12-01 12:59:53

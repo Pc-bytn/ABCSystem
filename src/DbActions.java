@@ -1,5 +1,5 @@
 public interface DbActions {
-    void select();
+    void select(int id);
 
     void add();
 
