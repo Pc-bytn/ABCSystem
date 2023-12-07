@@ -6,30 +6,30 @@ import java.util.Scanner;
 
 public class CustomerUI {
 
-    private boolean exitProgram = false;
-
     public void startCustomer() {
         Scanner scanner = new Scanner(System.in);
 
-        while (!exitProgram) {
+        while (true) {
             showCustomerMenu();
             int pressedKey = getUserInput(scanner);
-
-            selectedCustomerMenuAction(pressedKey);
+            if (pressedKey == 0) {
+                break;
+            } else {
+                selectedCustomerMenuAction(pressedKey);
+            }
         }
 
-        System.out.println("Exiting Customer Management. Back to Main Menu.");
+        System.out.println("Returning to Main Menu.");
         scanner.close();  // Close the scanner when done
     }
 
 
     private int getUserInput(Scanner scanner) {
-        int pressedKey = 0;
+        int pressedKey = -1;
         try {
             pressedKey = scanner.nextInt();
-        } catch (InputMismatchException mismatchException) {
+        } catch (InputMismatchException e) {
             System.out.println("Invalid input. Please enter a valid number.");
-            scanner.nextLine(); // Consume the invalid input
         }
         return pressedKey;
     }
@@ -49,10 +49,9 @@ public class CustomerUI {
                 System.out.println("Entered No 4");
                 break;
             case 0: // Returning to Main.java
-                exitProgram = true;
                 break;
             default:
-                System.out.println("Please Enter Valid Number");
+                System.out.println("Try Again.");
         }
     }
 
@@ -75,39 +74,39 @@ public class CustomerUI {
         boolean addMoreCustomers = true;
         Scanner inputScanner = new Scanner(System.in);
 
-        while (addMoreCustomers && !exitProgram) {
-            System.out.print(" Enter Your Name           :");
-            String name = inputScanner.nextLine();
-            System.out.print(" Enter Your Email          :");
-            String email = inputScanner.nextLine();
-            System.out.print(" Enter Your Address        :");
-            String address = inputScanner.nextLine();
-            System.out.print(" Enter Your Contact Number :");
-            String contactNumber = inputScanner.nextLine();
-            System.out.print(" Enter Your DOB            :");
-            String dateOfBirth = inputScanner.nextLine();
-            System.out.print(" Enter Your Gender         :");
-            String gender = inputScanner.nextLine();
-
-            Customer customer = new Customer();
-            customer.setName(name);
-            customer.setEmail(email);
-            customer.setAddress(address);
-            customer.setContactNumber(contactNumber);
-            customer.setDateOfBirth(dateOfBirth);
-            customer.setGender(gender);
-            customer.add();
+        while (addMoreCustomers) {
 
             System.out.println("|----------------------------------------------|");
-            System.out.println("| (1) Add Another Customer                    |");
-            System.out.println("| (0) Return to Customer Menu                 |");
+            System.out.println("| (1) Add Customer                             |");
+            System.out.println("| (0) Return to Customer Menu                  |");
             System.out.println("|----------------------------------------------|");
             System.out.print("Enter the number of the title : ");
 
             int userChoice = getUserInput(inputScanner);
-
             if (userChoice == 1) {
-                // Continue adding another customer
+                System.out.print(" Enter Your Name           :");
+                String name = inputScanner.nextLine();
+                System.out.print(" Enter Your Email          :");
+                String email = inputScanner.nextLine();
+                System.out.print(" Enter Your Address        :");
+                String address = inputScanner.nextLine();
+                System.out.print(" Enter Your Contact Number :");
+                String contactNumber = inputScanner.nextLine();
+                System.out.print(" Enter Your DOB            :");
+                String dateOfBirth = inputScanner.nextLine();
+                System.out.print(" Enter Your Gender         :");
+                String gender = inputScanner.nextLine();
+
+                // Data will add to the DB after user confirmation
+                Customer customer = new Customer();
+                customer.setName(name);
+                customer.setEmail(email);
+                customer.setAddress(address);
+                customer.setContactNumber(contactNumber);
+                customer.setDateOfBirth(dateOfBirth);
+                customer.setGender(gender);
+                customer.add();
+
             } else if (userChoice == 0) {
                 // Return to the customer menu
                 addMoreCustomers = false;
@@ -120,7 +119,7 @@ public class CustomerUI {
     public void selectCustomer() {
         Scanner scn = new Scanner(System.in);
         System.out.print(" Enter Customer Id No. : CUS");
-        int customerID = scn.nextInt();
+        int customerID = getUserInput(scn);
         Customer customer = new Customer();
         customer.select(customerID);
     }
