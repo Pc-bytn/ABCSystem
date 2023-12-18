@@ -124,8 +124,8 @@ public class Customer implements DbActions {
         String query = "INSERT INTO `customer`(`cusName`, `cusEmail`, `cusAddress`, `cusMobileNo`, `cusDOB`, `cusGender`) " +
                 "VALUES (?,?,?,?,?,?)";
 
-        PreparedStatement preparedStatement = null;
-        Connection con = null;
+        PreparedStatement preparedStatement;
+        Connection con;
         try {
             con = DbConnect.connect();
             assert con != null;

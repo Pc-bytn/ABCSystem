@@ -13,8 +13,9 @@ public class CustomerUI {
             showCustomerMenu();
             int pressedKey = getUserInput(scanner);
             if (pressedKey == 0) {
-                Main.startProgram();
                 System.out.println("Returning to Main Menu.");
+                Main.startProgram();
+                break;
             } else {
                 selectedCustomerMenuAction(pressedKey);
             }

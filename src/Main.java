@@ -17,6 +17,7 @@ public class Main {
                 pressedKey = scanner.nextInt();
                 selectedMainMenuAction(pressedKey);
                 break;
+
             } catch (InputMismatchException mismatchException) {
                 System.out.println("Invalid input. Please enter a valid number.");
                 scanner.nextLine();
